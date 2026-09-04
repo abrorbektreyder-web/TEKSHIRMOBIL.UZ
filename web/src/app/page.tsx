@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { MobileBottomNav } from '../components/MobileBottomNav';
 import { ImeiInput } from '../components/ImeiInput';
 import { VerificationResultModal } from '../components/VerificationResultModal';
 import { PackagePurchaseModal } from '../components/PackagePurchaseModal';
@@ -318,6 +319,12 @@ export default function HomePage() {
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
         onSuccess={(loggedUser) => setUser(loggedUser)}
+      />
+
+      <MobileBottomNav
+        user={user}
+        onOpenAuth={() => setIsAuthOpen(true)}
+        onOpenPackages={() => setIsPackagesOpen(true)}
       />
     </>
   );

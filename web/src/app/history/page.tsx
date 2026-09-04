@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
+import { MobileBottomNav } from '../../components/MobileBottomNav';
 import { AuthModal } from '../../components/AuthModal';
 import { PackagePurchaseModal } from '../../components/PackagePurchaseModal';
 import { api, getSavedUser, clearToken } from '../../lib/api';
@@ -206,6 +207,12 @@ export default function HistoryPage() {
           setIsAuthOpen(true);
         }}
         isLoggedIn={!!user}
+      />
+
+      <MobileBottomNav
+        user={user}
+        onOpenAuth={() => setIsAuthOpen(true)}
+        onOpenPackages={() => setIsPackagesOpen(true)}
       />
     </>
   );

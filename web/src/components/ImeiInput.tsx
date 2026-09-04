@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { cleanImei, isValidImei, formatImeiDisplay } from '@tekshir/shared';
-import { CheckCircle2, AlertCircle, Sparkles, X, Clipboard } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Sparkles, X, Clipboard, Camera } from 'lucide-react';
+import { ImeiCameraScanner } from './ImeiCameraScanner';
 
 interface ImeiInputProps {
   value: string;
@@ -12,6 +13,7 @@ interface ImeiInputProps {
 }
 
 export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps) {
+  const [scannerOpen, setScannerOpen] = useState(false);
   const cleaned = useMemo(() => cleanImei(value), [value]);
 
   const validationState = useMemo(() => {
@@ -76,6 +78,14 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
 
           {/* Action buttons inside input */}
           <div className="absolute right-3 flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setScannerOpen(true)}
+              className="p-1.5 rounded-lg text-slate-500 hover:text-brand-600 hover:bg-brand-50 transition"
+              title="Kamera orqali skanerlash"
+            >
+              <Camera className="w-4 h-4" />
+            </button>
             {cleaned.length > 0 ? (
               <button
                 type="button"
@@ -168,6 +178,12 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
           )}
         </button>
       </div>
+
+      <ImeiCameraScanner
+        isOpen={scannerOpen}
+        onClose={() => setScannerOpen(false)}
+        onScan={(scanned) => onChange(scanned)}
+      />
     </div>
   );
 }

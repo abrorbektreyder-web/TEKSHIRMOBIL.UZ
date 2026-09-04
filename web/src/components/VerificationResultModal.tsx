@@ -13,7 +13,10 @@ import {
   Calendar,
   Hash,
   Coins,
+  QrCode,
+  FileCheck,
 } from 'lucide-react';
+import { VerificationCertificate } from './VerificationCertificate';
 
 interface VerificationResultModalProps {
   data: PublicVerificationResponse | null;
@@ -23,6 +26,7 @@ interface VerificationResultModalProps {
 
 export function VerificationResultModal({ data, onClose, onReset }: VerificationResultModalProps) {
   const [copied, setCopied] = React.useState(false);
+  const [isCertOpen, setIsCertOpen] = React.useState(false);
 
   if (!data) return null;
 
@@ -127,6 +131,19 @@ Tekshiruv ID: ${data.requestId}`;
             </div>
           </div>
 
+          {/* Certificate Banner / Action */}
+          <button
+            type="button"
+            onClick={() => setIsCertOpen(true)}
+            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-brand-50 to-indigo-50 border border-brand-200 hover:border-brand-300 text-brand-900 font-bold text-xs flex items-center justify-between shadow-sm transition"
+          >
+            <span className="flex items-center gap-2">
+              <FileCheck className="w-4 h-4 text-brand-600" />
+              <span>Rasmiy Verifikatsiya Sertifikati (PDF & QR)</span>
+            </span>
+            <QrCode className="w-4 h-4 text-brand-600" />
+          </button>
+
           {/* Action Buttons */}
           <div className="pt-2 flex flex-col sm:flex-row items-center gap-2.5">
             <button
@@ -147,7 +164,7 @@ Tekshiruv ID: ${data.requestId}`;
             </button>
 
             <button
-              onClick={() => window.print()}
+              onClick={() => setIsCertOpen(true)}
               className="w-full sm:w-auto py-3 px-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
               title="Chop etish"
             >
@@ -164,6 +181,13 @@ Tekshiruv ID: ${data.requestId}`;
           </div>
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      <VerificationCertificate
+        isOpen={isCertOpen}
+        onClose={() => setIsCertOpen(false)}
+        data={data}
+      />
     </div>
   );
 }
