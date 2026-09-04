@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { api, setToken, setSavedUser } from '../lib/api';
-import { X, Smartphone, KeyRound, ShieldCheck, ArrowRight, UserCheck } from 'lucide-react';
+import { X, Smartphone, KeyRound, ShieldCheck, ArrowRight, UserCheck, Eye, EyeOff } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -22,6 +22,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   // Password login form
   const [adminPhone, setAdminPhone] = useState('+998901234567');
   const [password, setPassword] = useState('admin12345');
+  const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -263,13 +264,24 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Parol:</label>
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full text-sm px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-brand-600 dark:focus:border-brand-400 outline-none"
-              />
+              <div className="relative flex items-center">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full text-sm px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-brand-600 dark:focus:border-brand-400 outline-none pr-11"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200 transition focus:outline-none"
+                  title={showPassword ? "Parolni yashirish" : "Parolni ko'rsatish"}
+                  aria-label={showPassword ? "Parolni yashirish" : "Parolni ko'rsatish"}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
 
             {/* Quick pre-fill demo buttons */}
