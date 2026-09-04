@@ -9,11 +9,13 @@
     "web"
   ],
   "scripts": {
-    "dev:backend": "npm run start:dev --workspace=backend",
-    "dev:web": "npm run dev --workspace=web",
+    "build": "npm run build:shared && npm run build:web",
+    "build:all": "npm run build:shared && npm run build:backend && npm run build:web",
     "build:shared": "npm run build --workspace=shared",
     "build:backend": "npm run build --workspace=backend",
-    "build:web": "npm run build --workspace=web"
+    "build:web": "npm run build --workspace=web",
+    "dev:backend": "npm run start:dev --workspace=backend",
+    "dev:web": "npm run dev --workspace=web"
   },
   "keywords": [
     "imei",

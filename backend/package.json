@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "NestJS Modular Monolith for IMEI Verification Platform",
   "scripts": {
+    "prebuild": "npm run build --prefix ../shared",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",
