@@ -49,13 +49,13 @@ export function VerificationCertificate({ isOpen, onClose, data }: VerificationC
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden max-h-[95vh] flex flex-col animate-scaleUp">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-[#131b2e] rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[95vh] flex flex-col animate-scaleUp">
         {/* Modal Top Bar (Hidden on print) */}
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50 print:hidden">
+        <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-[#0b0f19] print:hidden">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-brand-600" />
-            <h3 className="text-sm font-black text-slate-900">Rasmiy Verifikatsiya Sertifikati</h3>
+            <ShieldCheck className="w-5 h-5 text-brand-600 dark:text-brand-400" />
+            <h3 className="text-sm font-black text-slate-900 dark:text-white">Rasmiy Verifikatsiya Sertifikati</h3>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -69,7 +69,7 @@ export function VerificationCertificate({ isOpen, onClose, data }: VerificationC
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition"
             >
               <X className="w-5 h-5" />
             </button>

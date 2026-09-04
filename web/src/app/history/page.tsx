@@ -61,21 +61,21 @@ export default function HistoryPage() {
           <div>
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand-600 mb-2 transition"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 mb-2 transition"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Asosiy sahifaga qaytish
             </Link>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-              <History className="w-7 h-7 text-brand-600" /> Tekshiruvlar tarixi
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+              <History className="w-7 h-7 text-brand-600 dark:text-brand-400" /> Tekshiruvlar tarixi
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Siz amalga oshirgan barcha IMEI tekshiruvlari ro‘yxati
             </p>
           </div>
 
           <Link
             href="/"
-            className="hidden sm:inline-flex items-center gap-1.5 py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-sm transition"
+            className="hidden sm:inline-flex items-center gap-1.5 py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white text-xs font-bold shadow-sm transition"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Yangi tekshiruv
@@ -84,36 +84,36 @@ export default function HistoryPage() {
 
         {/* Content */}
         {!user ? (
-          <div className="p-12 text-center rounded-3xl bg-white border border-slate-200 shadow-sm max-w-md mx-auto">
-            <History className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-            <h3 className="font-extrabold text-slate-900 text-lg mb-2">Tizimga kiring</h3>
-            <p className="text-xs text-slate-500 mb-6 leading-relaxed">
+          <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm max-w-md mx-auto">
+            <History className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
+            <h3 className="font-extrabold text-slate-900 dark:text-white text-lg mb-2">Tizimga kiring</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
               O‘z tekshiruvlaringiz tarixini ko‘rish uchun telefon raqamingiz orqali tizimga kiring.
             </p>
             <button
               onClick={() => setIsAuthOpen(true)}
-              className="py-3 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition"
+              className="py-3 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold text-xs shadow-md transition"
             >
               Kirish / Ro‘yxatdan o‘tish
             </button>
           </div>
         ) : loading ? (
-          <div className="p-12 text-center text-slate-400">
+          <div className="p-12 text-center text-slate-400 dark:text-slate-500">
             <div className="w-8 h-8 border-2 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
             <span>Tarix yuklanmoqda...</span>
           </div>
         ) : history.length === 0 ? (
-          <div className="p-12 text-center rounded-3xl bg-white border border-slate-200 shadow-sm">
-            <History className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-            <h3 className="font-extrabold text-slate-900 text-base mb-1">
+          <div className="p-12 text-center rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <History className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
+            <h3 className="font-extrabold text-slate-900 dark:text-white text-base mb-1">
               Hozircha tekshiruvlar mavjud emas
             </h3>
-            <p className="text-xs text-slate-500 mb-6">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
               Siz hali hech qanday qurilma tekshirmadingiz.
             </p>
             <Link
               href="/"
-              className="inline-flex py-3 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition"
+              className="inline-flex py-3 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold text-xs shadow-md transition"
             >
               Birinchi telefonni tekshirish
             </Link>
@@ -127,16 +127,16 @@ export default function HistoryPage() {
               return (
                 <div
                   key={item.id}
-                  className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-slate-300"
+                  className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-slate-300 dark:hover:border-slate-700"
                 >
                   <div className="flex items-start sm:items-center gap-3.5">
                     <div
                       className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                         isAlert
-                          ? 'bg-rose-50 text-rose-600 border border-rose-200'
+                          ? 'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800'
                           : isClear
-                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-200'
-                          : 'bg-amber-50 text-amber-600 border border-amber-200'
+                          ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
+                          : 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
                       }`}
                     >
                       {isAlert && <ShieldAlert className="w-5 h-5" />}
@@ -146,29 +146,29 @@ export default function HistoryPage() {
 
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-slate-900 text-sm">
+                        <span className="font-mono font-bold text-slate-900 dark:text-white text-sm">
                           {item.maskedImei}
                         </span>
                         <span
                           className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full border ${
                             isAlert
-                              ? 'bg-rose-50 text-rose-700 border-rose-200'
+                              ? 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800'
                               : isClear
-                              ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                              : 'bg-amber-50 text-amber-700 border-amber-200'
+                              ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                              : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
                           }`}
                         >
                           {isAlert ? 'Muddatli to‘lov faol' : isClear ? 'Toza' : 'Provayder xatosi'}
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-3 mt-1 text-xs text-slate-500">
+                      <div className="flex items-center gap-3 mt-1 text-xs text-slate-500 dark:text-slate-400">
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3 text-slate-400" />
+                          <Calendar className="w-3 h-3 text-slate-400 dark:text-slate-500" />
                           {new Date(item.createdAt).toLocaleString('uz-UZ')}
                         </span>
                         {item.matchedPartnerName && (
-                          <span className="font-semibold text-slate-700">
+                          <span className="font-semibold text-slate-700 dark:text-slate-300">
                             Do‘kon: {item.matchedPartnerName}
                           </span>
                         )}
@@ -177,7 +177,7 @@ export default function HistoryPage() {
                   </div>
 
                   <div className="text-right flex items-center justify-between sm:justify-end gap-3 text-xs">
-                    <span className="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded">
+                    <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
                       ID: {item.requestId}
                     </span>
                   </div>

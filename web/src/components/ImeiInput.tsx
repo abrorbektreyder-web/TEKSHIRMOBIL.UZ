@@ -49,12 +49,12 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 p-6 md:p-8 transition-all">
-        <label className="block text-sm font-bold text-slate-900 mb-2">
+      <div className="bg-white dark:bg-[#131b2e] rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 transition-colors">
+        <label className="block text-sm font-bold text-slate-900 dark:text-white mb-2">
           Telefon IMEI raqamini kiriting:
         </label>
-        <p className="text-xs text-slate-500 mb-4">
-          Qurilma IMEI kodini bilish uchun telefoningizda <code className="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-slate-800 font-semibold">*#06#</code> tering.
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+          Qurilma IMEI kodini bilish uchun telefoningizda <code className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-mono font-semibold">*#06#</code> tering.
         </p>
 
         {/* Input box */}
@@ -67,12 +67,12 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
             onKeyDown={handleKeyDown}
             placeholder="3560 0000 0000 000"
             disabled={loading}
-            className={`w-full text-xl sm:text-2xl font-mono tracking-wider px-4 py-4 rounded-xl border-2 transition-all outline-none pr-28 ${
+            className={`w-full text-xl sm:text-2xl font-mono tracking-wider px-4 py-4 rounded-2xl border-2 transition-all outline-none pr-32 ${
               validationState === 'VALID'
-                ? 'border-emerald-500 bg-emerald-50/20 text-emerald-950 focus:ring-4 focus:ring-emerald-500/20'
+                ? 'border-emerald-500 bg-emerald-50/20 dark:bg-emerald-950/20 text-emerald-950 dark:text-emerald-300 focus:ring-4 focus:ring-emerald-500/20'
                 : validationState === 'INVALID_LUHN'
-                ? 'border-rose-500 bg-rose-50/20 text-rose-950 focus:ring-4 focus:ring-rose-500/20'
-                : 'border-slate-300 focus:border-brand-600 focus:ring-4 focus:ring-brand-500/10'
+                ? 'border-rose-500 bg-rose-50/20 dark:bg-rose-950/20 text-rose-950 dark:text-rose-300 focus:ring-4 focus:ring-rose-500/20'
+                : 'border-slate-300 dark:border-slate-700 bg-white dark:bg-[#162036] text-slate-900 dark:text-white focus:border-brand-600 focus:ring-4 focus:ring-brand-500/10'
             }`}
           />
 
@@ -81,7 +81,7 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
             <button
               type="button"
               onClick={() => setScannerOpen(true)}
-              className="p-1.5 rounded-lg text-slate-500 hover:text-brand-600 hover:bg-brand-50 transition"
+              className="p-2 rounded-xl text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               title="Kamera orqali skanerlash"
             >
               <Camera className="w-4 h-4" />
@@ -90,7 +90,7 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
               <button
                 type="button"
                 onClick={() => onChange('')}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 title="Tozalash"
               >
                 <X className="w-4 h-4" />
@@ -99,14 +99,14 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
               <button
                 type="button"
                 onClick={handlePaste}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-brand-600 hover:bg-brand-50 transition"
+                className="p-2 rounded-xl text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 transition"
                 title="Qo‘yish (Paste)"
               >
                 <Clipboard className="w-4 h-4" />
               </button>
             )}
 
-            <div className="text-xs font-mono font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200">
+            <div className="text-xs font-mono font-semibold px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
               {cleaned.length}/15
             </div>
           </div>
@@ -115,24 +115,24 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
         {/* Validation hint pill */}
         <div className="mt-3 flex items-center justify-between text-xs min-h-[22px]">
           {validationState === 'VALID' && (
-            <div className="flex items-center gap-1.5 text-emerald-700 font-semibold animate-fadeIn">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>15 xonali IMEI to‘g‘ri (Luhn tekshiruvidan o‘tdi)</span>
+            <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-semibold animate-fadeIn">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span>15 xonali IMEI to‘g‘ri (Luhn tasdiqlangan)</span>
             </div>
           )}
           {validationState === 'INVALID_LUHN' && (
-            <div className="flex items-center gap-1.5 text-rose-700 font-semibold animate-fadeIn">
-              <AlertCircle className="w-4 h-4 text-rose-600" />
+            <div className="flex items-center gap-1.5 text-rose-700 dark:text-rose-400 font-semibold animate-fadeIn">
+              <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400" />
               <span>IMEI nazorat raqami noto‘g‘ri (Luhn algoritmi xatosi)</span>
             </div>
           )}
           {validationState === 'INCOMPLETE' && (
-            <div className="text-slate-400">
+            <div className="text-slate-400 dark:text-slate-500">
               Yana {15 - cleaned.length} ta raqam kiriting
             </div>
           )}
           {validationState === 'EMPTY' && (
-            <div className="text-slate-400">Faqat 15 xonali raqam qabul qilinadi</div>
+            <div className="text-slate-400 dark:text-slate-500">Faqat 15 xonali raqam qabul qilinadi</div>
           )}
 
           {/* Quick test sample buttons */}
@@ -140,16 +140,16 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
             <button
               type="button"
               onClick={() => onChange('356111111111113')}
-              className="text-[11px] text-rose-600 hover:underline flex items-center gap-0.5"
+              className="text-[11px] text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-0.5"
             >
               <Sparkles className="w-3 h-3" />
               Test Faol
             </button>
-            <span className="text-slate-300">|</span>
+            <span className="text-slate-300 dark:text-slate-700">|</span>
             <button
               type="button"
               onClick={() => onChange('356777777777775')}
-              className="text-[11px] text-emerald-600 hover:underline flex items-center gap-0.5"
+              className="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-0.5"
             >
               <Sparkles className="w-3 h-3" />
               Test Toza
@@ -162,10 +162,10 @@ export function ImeiInput({ value, onChange, onSubmit, loading }: ImeiInputProps
           type="button"
           onClick={onSubmit}
           disabled={validationState !== 'VALID' || loading}
-          className={`w-full mt-6 py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-lg transition-all ${
+          className={`w-full mt-6 py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2 shadow-lg transition-all ${
             validationState === 'VALID' && !loading
               ? 'bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white shadow-brand-600/25 cursor-pointer'
-              : 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
+              : 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed shadow-none'
           }`}
         >
           {loading ? (
