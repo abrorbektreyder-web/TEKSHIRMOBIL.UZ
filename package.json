@@ -1,0 +1,26 @@
+{
+  "name": "tekshir-monorepo",
+  "version": "1.0.0",
+  "description": "IMEI Verification Platform — MVP v1.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "backend",
+    "web"
+  ],
+  "scripts": {
+    "dev:backend": "npm run start:dev --workspace=backend",
+    "dev:web": "npm run dev --workspace=web",
+    "build:shared": "npm run build --workspace=shared",
+    "build:backend": "npm run build --workspace=backend",
+    "build:web": "npm run build --workspace=web"
+  },
+  "keywords": [
+    "imei",
+    "verification",
+    "uzbekistan",
+    "installment-checker"
+  ],
+  "author": "",
+  "license": "ISC"
+}
